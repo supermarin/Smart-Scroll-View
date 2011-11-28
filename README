@@ -1,1 +1,2 @@
-Hello World!
+This is a component which can automatically scroll your scrollview when the keyboard comes up.
+It should work for both iPhone/iPad, and all you have to do is extend the controller and wire your ScrollView in the Interface Builder.
