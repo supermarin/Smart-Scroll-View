@@ -1,5 +1,8 @@
 ## Introduction
 This is a component which can automatically scroll your scrollview when the keyboard comes up and covers your input field(s).
+It figures out which textField you have clicked on, and places it on the visible area.
+Check out the SampleProject!
+
 
 Instead of you, it will:
 
