@@ -12,8 +12,8 @@ Images coming soon...
     - Start using it!
 
 ## Usage
-    - #import the SmartScrollview.h
-    - Extend the SmartScrollView in your ViewController.h
+    - #import the SmartScrollViewController.h
+    - Extend the SmartScrollViewController in your ViewController.h
     - In the InterfaceBuilder, wire the scrollView outlet (if not using IB, self.scrollView = theScrollView)
 
 
