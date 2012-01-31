@@ -95,7 +95,7 @@
     }];
 }
 
-- (void)releaseScrollViewIfNotArc {
+- (void)releaseScrollViewIfNoArc {
 #ifdef OBJC_ARC_UNAVAILABLE
     [self setScrollView:nil];
 #endif
@@ -125,7 +125,7 @@
 }
 
 - (void)viewDidUnload {
-    [self releaseScrollViewIfNotArc];
+    [self releaseScrollViewIfNoArc];
     [super viewDidUnload];
 }
 
