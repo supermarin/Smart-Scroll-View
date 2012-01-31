@@ -3,7 +3,7 @@
 //  SampleProject
 //
 //  Created by Marin Usalj on 1/31/12.
-//  Copyright (c) 2012 InGenius Labs. All rights reserved.
+//  Copyright (c) 2012 @mneorr | mneorr.com | linkedin.com/in/marinusalj. All rights reserved.
 //
 
 #import "AppDelegate.h"

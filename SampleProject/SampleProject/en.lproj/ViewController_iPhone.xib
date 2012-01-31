@@ -34,18 +34,6 @@
 			<object class="IBUIView" id="774585933">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIScrollView" id="133897886">
-						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 460}</string>
-						<reference key="NSSuperview" ref="774585933"/>
-						<string key="NSReuseIdentifierKey">_NS:190</string>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -57,6 +45,16 @@
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBUIScrollView" id="815074673">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">274</int>
+				<string key="NSFrameSize">{320, 460}</string>
+				<reference key="NSSuperview"/>
+				<string key="NSReuseIdentifierKey">_NS:190</string>
+				<bool key="IBUIClipsSubviews">YES</bool>
+				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -93,15 +91,13 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
 						<reference key="object" ref="774585933"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="133897886"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="133897886"/>
-						<reference key="parent" ref="774585933"/>
+						<reference key="object" ref="815074673"/>
+						<reference key="parent" ref="0"/>
 					</object>
 				</array>
 			</object>
