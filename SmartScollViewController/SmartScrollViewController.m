@@ -2,7 +2,7 @@
 //  SmartScrollViewController.m
 //
 //  Created by Marin Usalj on 9/1/11.
-//  Copyright (c) 2011 http://mneorr.com. All rights reserved.
+//  Copyright (c) 2011 @mneorr | mneorr.com | linkedin.com/in/marinusalj. All rights reserved.
 //
 
 #import "SmartScrollViewController.h"
@@ -35,6 +35,7 @@
 - (CGFloat)keyboardHeight:(NSNotification *) notification {
     if (UIDeviceOrientationIsPortrait(self.interfaceOrientation))
         return [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
     else return [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.width;
 }
 
@@ -115,7 +116,6 @@
     [super viewDidAppear:animated];
 
     [self listenToKeyboardNotifications];
-    [self listenToPickerNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
