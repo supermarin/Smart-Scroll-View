@@ -11,7 +11,6 @@
 @implementation SmartScrollViewController
 @synthesize scrollView;
 
-
 #pragma mark - Private
 
 - (void)setUpScrollViewScrollingContent {
@@ -87,6 +86,12 @@
     }];
 }
 
+- (void)releaseScrollViewIfNotArc {
+#ifdef OBJC_ARC_UNAVAILABLE
+    [self setScrollView:nil];
+#endif
+}
+
 
 #pragma mark - View lifecycle
 
@@ -99,8 +104,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-
     [super viewDidAppear:animated];
+    
     [self listenToKeyboardNotifications];
 }
 
@@ -111,9 +116,7 @@
 }
 
 - (void)viewDidUnload {
-#ifdef OBJC_ARC_UNAVAILABLE
-    [self setScrollView:nil];
-#endif
+    [self releaseScrollViewIfNotArc];
     [super viewDidUnload];
 }
 
