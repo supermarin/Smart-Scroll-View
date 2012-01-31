@@ -29,14 +29,23 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDissapeared:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)listenToPickerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerAppeared:) name:@"UIPickerViewDidShowNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDissapeared:) name:@"UIPickerViewDidHideNotification" object:nil];
+}
+
 - (void)stopListeningToAllNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (CGFloat)getKeyboardHeight:(NSNotification *) notification {
+- (CGFloat)keyboardHeight:(NSNotification *) notification {
     if (UIDeviceOrientationIsPortrait(self.interfaceOrientation))
         return [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     else return [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.width;
+}
+
+- (CGFloat)keyboardAnimationDuration:(NSNotification *)notification {
+    return [[notification.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
 }
 
 - (void)reduceScrollViewFrameByKeyboardHeight:(CGFloat) keyboardHeight {
@@ -61,22 +70,28 @@
     [UIView commitAnimations];
 }
 
-- (float)getKeyboardAnimationDuration:(NSNotification *)notification {
-    return [[notification.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-}
+
 
 - (void)keyboardAppeared:(NSNotification *) notification {
-    [self animateWithDuration:[self getKeyboardAnimationDuration:notification] block:^{
-        [self reduceScrollViewFrameByKeyboardHeight:[self getKeyboardHeight:notification]];
+    [self animateWithDuration:[self keyboardAnimationDuration:notification] block:^{
+        [self reduceScrollViewFrameByKeyboardHeight:[self keyboardHeight:notification]];
         [scrollView scrollRectToVisible:[scrollView findFirstResponder].frame animated:NO];   
     }];
 }
 
 - (void)keyboardDissapeared:(NSNotification *) notification {
-    [self animateWithDuration:[self getKeyboardAnimationDuration:notification] block:^{
-        [self restoreScrollViewFrameByKeyboardHeight:[self getKeyboardHeight:notification]];
+    [self animateWithDuration:[self keyboardAnimationDuration:notification] block:^{
+        [self restoreScrollViewFrameByKeyboardHeight:[self keyboardHeight:notification]];
         [scrollView scrollRectToVisible:[scrollView findFirstResponder].frame animated:NO]; 
     }];
+}
+
+- (void)pickerAppeared: (NSNotification *) notification {
+    [scrollView scrollRectToVisible:CGRectMake(0, 500, self.view.frame.size.width, self.view.frame.size.height) animated:YES];
+}
+
+- (void)pickerDissapeared: (NSNotification *) notification {
+    
 }
 
 - (void)adjustScrollViewFrameToViewFrameWithDuration:(CGFloat)duration {
@@ -105,8 +120,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     [self listenToKeyboardNotifications];
+    [self listenToPickerNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
