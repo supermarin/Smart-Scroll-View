@@ -7,7 +7,7 @@ Instead of you, it will:
     - Set the scrollView's content size and frame size
     - Automatically scroll when the keyboard pops up, and scroll back
     - Release the view if using a non-arc environment
-
+    - Resign the text field's first responder by default, if you press Return
 
 Images coming soon... 
 
@@ -19,7 +19,7 @@ Images coming soon...
 ## Usage
     - #import the SmartScrollview.h
     - Extend the SmartScrollView in your ViewController.h
-    - In the InterfaceBuilder, wire the scroll view outlet
+    - In the InterfaceBuilder, wire the scrollView outlet (if not using IB, self.scrollView = theScrollView)
 
 ## iPhone / iPad support
 It works for both iPhone/iPad, and all you have to do is extend the controller and wire your scrollView outlet in the Interface Builder.

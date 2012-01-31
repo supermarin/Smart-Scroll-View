@@ -23,11 +23,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDissapeared:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)listenToPickerNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerAppeared:) name:@"UIPickerViewDidShowNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDissapeared:) name:@"UIPickerViewDidHideNotification" object:nil];
-}
-
 - (void)stopListeningToAllNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -79,14 +74,6 @@
         [self restoreScrollViewFrameByKeyboardHeight:[self keyboardHeight:notification]];
         [scrollView scrollRectToVisible:[scrollView findFirstResponder].frame animated:NO]; 
     }];
-}
-
-- (void)pickerAppeared: (NSNotification *) notification {
-    [scrollView scrollRectToVisible:CGRectMake(0, 500, self.view.frame.size.width, self.view.frame.size.height) animated:YES];
-}
-
-- (void)pickerDissapeared: (NSNotification *) notification {
-    
 }
 
 - (void)adjustScrollViewFrameToViewFrameWithDuration:(CGFloat)duration {
