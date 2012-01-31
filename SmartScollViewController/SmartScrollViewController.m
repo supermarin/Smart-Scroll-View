@@ -18,12 +18,6 @@
     scrollView.frame = self.view.bounds;
 }
 
-- (void)setUpScrollViewAutoresizingMask {
-    scrollView.autoresizingMask =
-    UIViewAutoresizingFlexibleWidth |
-    UIViewAutoresizingFlexibleHeight;
-}
-
 - (void)listenToKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAppeared:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDissapeared:) name:UIKeyboardWillHideNotification object:nil];
@@ -115,7 +109,6 @@
     
     [self.view addSubview:self.scrollView];
     [self setUpScrollViewScrollingContent];    
-    [self setUpScrollViewAutoresizingMask];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
