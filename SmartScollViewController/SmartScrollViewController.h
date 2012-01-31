@@ -14,6 +14,6 @@
 
 }
 
-@property (strong, atomic, readonly) IBOutlet UIScrollView *scrollView;
+@property (atomic, retain) IBOutlet UIScrollView *scrollView;
 
 @end

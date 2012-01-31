@@ -90,19 +90,33 @@
 
 #pragma mark - View lifecycle
 
--(void) viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self listenToKeyboardNotifications];
     
     [self.view addSubview:self.scrollView];
     [self setUpScrollViewScrollingContent];    
     [self setUpScrollViewAutoresizingMask];
 }
 
-- (void)viewDidUnload {
+- (void)viewDidAppear:(BOOL)animated {
+
+    [super viewDidAppear:animated];
+    [self listenToKeyboardNotifications];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
     [self stopListeningToAllNotifications];
+    [super viewDidDisappear:animated];
+}
+
+- (void)viewDidUnload {
+#ifdef OBJC_ARC_UNAVAILABLE
+    [self setScrollView:nil];
+#endif
     [super viewDidUnload];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
 }
