@@ -1,8 +1,14 @@
 ## Introduction
 This is a component which can automatically scroll your scrollview when the keyboard comes up and covers your input field(s).
 
-Images coming soon... feel free try out the sample project!
+Instead of you, it will:
+    - Add the scrollView as a subview. That means, you don't have to do it in the IB, and you can resize the view as much as you like when editing.
+    - Set the scrollView's content size and frame size
+    - Automatically scroll when the keyboard pops up, and scroll back
+    - Release the view if using a non-arc environment
 
+
+Images coming soon... 
 
 ## Instalation
     - Clone / Download the repo
@@ -15,7 +21,7 @@ Images coming soon... feel free try out the sample project!
     - In the InterfaceBuilder, wire the scroll view outlet
 
 ## iPhone / iPad support
-It works for both iPhone/iPad, and all you have to do is extend the controller and wire your ScrollView in the Interface Builder.
+It works for both iPhone/iPad, and all you have to do is extend the controller and wire your scrollView outlet in the Interface Builder.
 
-## TODO
+## In progress..
 The support for the action sheets, pickers, etc
